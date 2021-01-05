@@ -1,8 +1,9 @@
 # docker-snap
 
 ![](https://github.com/snap-contrib/docker-snap/workflows/Docker/badge.svg)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-This is a basic image with SNAP and snappy.
+This is a basic docker image with SNAP and snappy.
 
 You may evolve it to include additional conda packages by editing the `environment.yml` file and rebuilding the image.
 
