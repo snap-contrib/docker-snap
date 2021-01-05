@@ -41,7 +41,7 @@ RUN chmod 755 /tmp/install-miniforge.bash                                       
 
 USER ${NB_USER}
 
-ENV PATH=${CONDA_DIR}/envs/env_snap/snap/bin:${NB_PYTHON_PREFIX}/bin:${CONDA_DIR}/bin:$PATH \
+ENV PATH=${CONDA_DIR}/envs/env_snap/snap/bin:${CONDA_DIR}/envs/env_snap/bin:${CONDA_DIR}/bin:$PATH \
     KERNEL_PYTHON_PREFIX=${CONDA_DIR}/envs/env_snap  \
     PREFIX=${CONDA_DIR}/envs/env_snap
 
