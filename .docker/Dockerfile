@@ -11,11 +11,12 @@ ENV LC_ALL=en_US.UTF-8 \
     DEBIAN_FRONTEND=noninteractive \
     NB_USER=jovyan \
     NB_UID=1002 \
-    NB_GID=1002
-
+    NB_GID=1002 \
+    APP_BASE=/srv
     
 ENV USER=${NB_USER} \ 
-    HOME=/home/${NB_USER}
+    HOME=/home/${NB_USER} \
+    CONDA_DIR=${APP_BASE}/conda
     
 RUN groupadd --gid ${NB_GID} ${NB_USER}                                                                                             && \
     useradd --comment "Default user" --create-home --gid ${NB_GID} --no-log-init --shell /bin/bash --uid ${NB_UID} ${NB_USER}       && \
@@ -30,9 +31,6 @@ RUN groupadd --gid ${NB_GID} ${NB_USER}                                         
     echo "LANG=en_US.UTF-8" > /etc/locale.conf                                                                                      && \
     locale-gen en_US.UTF-8
 
-ENV APP_BASE=/srv \
-    CONDA_DIR=${APP_BASE}/conda 
-
 # conda installation via miniforge
 ADD .docker/install-miniforge.bash /tmp/install-miniforge.bash
 
@@ -43,11 +41,9 @@ RUN chmod 755 /tmp/install-miniforge.bash                                       
 
 USER ${NB_USER}
 
-ENV NB_PYTHON_PREFIX=${CONDA_DIR}/envs/env_snap 
-
-ENV PATH=${NB_PYTHON_PREFIX}/snap/bin:${NB_PYTHON_PREFIX}/bin:$CONDA_DIR/bin:$PATH \
-    KERNEL_PYTHON_PREFIX=${NB_PYTHON_PREFIX} \
-    PREFIX=${NB_PYTHON_PREFIX}
+ENV PATH=${CONDA_DIR}/envs/env_snap/snap/bin:${NB_PYTHON_PREFIX}/bin:${CONDA_DIR}/bin:$PATH \
+    KERNEL_PYTHON_PREFIX=${CONDA_DIR}/envs/env_snap  \
+    PREFIX=${CONDA_DIR}/envs/env_snap
 
 ADD environment.yml /tmp/environment.yml
 
