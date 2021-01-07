@@ -19,7 +19,7 @@ Log on the docker repository with:
 docker login docker.pkg.github.com --username <your_user_name> --password <generated_token_not_password>
 ```
 
-The pull the image from the command line with: 
+Then pull the image from the command line with: 
 
 ```console
 docker pull docker.pkg.github.com/snap-contrib/docker-snap/snap:latest
