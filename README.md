@@ -5,7 +5,7 @@
 
 This is a basic docker image with SNAP and snappy.
 
-You may evolve it to include additional conda packages by editing the `environment.yml` file and rebuilding the image.
+You may evolve it to include additional conda packages by editing the `environment.yml` file and then rebuilding the image.
 
 ## Pulling this docker image
 
