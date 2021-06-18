@@ -22,7 +22,8 @@ RUN groupadd --gid ${NB_GID} ${NB_USER}                                         
     useradd --comment "Default user" --create-home --gid ${NB_GID} --no-log-init --shell /bin/bash --uid ${NB_UID} ${NB_USER}       && \
     apt-get -qq update                                                                                                              && \
     apt-get -qq install --yes apt-utils                                                                                             && \
-    apt-get -qq install --yes --no-install-recommends ttf-dejavu wget make g++ sudo vim less unzip tree file  locales > /dev/null   && \
+    apt-get -qq install --yes --no-install-recommends ttf-dejavu \
+            wget make g++ sudo vim less unzip tree file libgfortran5 locales > /dev/null                                            && \
     apt-get -qq purge                                                                                                               && \
     apt-get -qq clean                                                                                                               && \
     rm -rf /var/lib/apt/lists/*                                                                                                     && \
